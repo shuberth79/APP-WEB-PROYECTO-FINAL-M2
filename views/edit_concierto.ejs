@@ -14,8 +14,14 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="fecha" class="form-label">Fecha</label>
-                                    <input type="date" name="fecha" id="fecha" class="form-control" required
-                                        value="<%= concierto.fecha %>"/>
+                                    <input 
+                                        type="date" 
+                                        name="fecha" 
+                                        id="fecha" 
+                                        class="form-control" 
+                                        required
+                                        value="<%= new Date(concierto.fecha).toISOString().slice(0, 10) %>"
+                                    />
                                 </div>
                                 <div class="mb-3">
                                     <label for="hora" class="form-label">Hora</label>
@@ -36,8 +42,20 @@
                                         value="<%= concierto.ciudad %>"/>
                                 </div>
                             <br>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                            <a href="/admin" class="btn btn-danger">Cancelar</a>
+                            <!-- <button type="submit" class="btn btn-primary">Guardar</button>
+                            <a href="/admin" class="btn btn-danger">Cancelar</a> -->
+                            <button type="submit" class="btn btn-primary" 
+                                style="background-color: #2e8eee; border-color: #2e8eee;"
+                                onmouseover="this.style.backgroundColor='#b463b3'; this.style.borderColor='#b463b3';"
+                                onmouseout="this.style.backgroundColor='#2e8eee'; this.style.borderColor='#2e8eee';">
+                                Guardar
+                            </button>
+                            <a href="/admin" class="btn btn-danger" 
+                                style="background-color: #2e8eee; border-color: #2e8eee;"
+                                onmouseover="this.style.backgroundColor='#b463b3'; this.style.borderColor='#b463b3';"
+                                onmouseout="this.style.backgroundColor='#2e8eee'; this.style.borderColor='#2e8eee';">
+                                Cancelar
+                            </a>
                         </form>
                     </div> 
                 </div> 
