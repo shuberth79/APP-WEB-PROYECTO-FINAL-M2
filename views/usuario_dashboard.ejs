@@ -1,0 +1,146 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<body>
+    <div class="container mt-4">
+        <h2>Panel del Usuario 🎶</h2>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Hola, <%= usuario.nombre %> 👋</h2>
+            <a href="/logout" class="btn btn-danger">Cerrar Sesión</a>
+        </div>
+
+        <!-- NAV TABS -->
+        <ul class="nav nav-tabs" id="usuarioTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="disponibles-tab" data-bs-toggle="tab" data-bs-target="#disponibles" 
+                type="button" role="tab" aria-controls="disponibles" aria-selected="false">Conciertos Disponibles</button> <!--active-->
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="misconciertos-tab" data-bs-toggle="tab" data-bs-target="#misconciertos" type="button" role="tab" aria-controls="misconciertos" aria-selected="false">Mis Conciertos</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="datos-tab" data-bs-toggle="tab" data-bs-target="#datos" type="button" role="tab" aria-controls="datos" aria-selected="true">Mis Datos</button>
+            </li>
+        </ul>
+
+        <!-- CONTENIDO DE CADA PESTAÑA -->
+        <div class="tab-content mt-3" id="usuarioTabsContent">
+
+            <!-- Pestaña Conciertos Disponibles -->
+            <div class="tab-pane fade show active" id="disponibles" role="tabpanel" aria-labelledby="disponibles-tab"> <!--show active-->
+                <div class="card mb-4">
+                    <div class="card-header">CONCIERTOS DISPONIBLES👇</div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Fecha</th>
+                                    <th>Hora</th>
+                                    <th>Ciudad</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% conciertos.forEach(concierto => { %>
+                                    <tr>
+                                        <td><%= concierto.nombre_concierto %></td>
+                                        <td><%= concierto.fecha %></td>
+                                        <td><%= concierto.hora %></td>
+                                        <td><%= concierto.ciudad %></td>
+                                        <td>
+                                            <form action="/inscribir_concierto" method="POST">
+                                                <input type="hidden" name="usuario_id" value="<%= usuario.usuario_id %>">
+                                                <input type="hidden" name="concierto_id" value="<%= concierto.concierto_id %>">
+                                                <button type="submit" class="btn btn-success btn-sm">Inscribirme</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pestaña Mis Conciertos -->
+            <div class="tab-pane fade" id="misconciertos" role="tabpanel" aria-labelledby="misconciertos-tab">
+                <div class="card">
+                    <div class="card-header">MIS CONCIERTOS📌</div>
+                    <div class="card-body">
+                        <% if (misConciertos.length > 0) { %>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Ciudad</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% misConciertos.forEach(concierto => { %>
+                                        <tr>
+                                            <td><%= concierto.nombre_concierto %></td>
+                                            <td><%= concierto.fecha %></td>
+                                            <td><%= concierto.hora %></td>
+                                            <td><%= concierto.ciudad %></td>
+                                            <td>
+                                                <form action="/cancelar_concierto" method="POST" onsubmit="return confirm('¿Seguro que deseas cancelar tu inscripción?');">
+                                                    <input type="hidden" name="usuario_id" value="<%= usuario.usuario_id %>">
+                                                    <input type="hidden" name="concierto_id" value="<%= concierto.concierto_id %>">
+                                                    <button type="submit" class="btn btn-danger btn-sm">Cancelar</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                        <% } else { %>
+                            <p>No estás inscrito en ningún concierto.</p>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pestaña Mis Datos -->
+            <div class="tab-pane fade" id="datos" role="tabpanel" aria-labelledby="datos-tab">
+                <div class="card mb-4">
+                    <div class="card-header">MIS DATOS</div>
+                    <div class="card-body">
+                        <p><strong>Nombre:</strong> <%= usuario.nombre %></p>
+                        <p><strong>Email:</strong> <%= usuario.email %></p>
+                        <p><strong>Teléfono:</strong> <%= usuario.telefono %></p>
+                        <p><strong>Dirección:</strong> <%= usuario.direccion %></p>
+                        <a href="/edit_usuario/<%= usuario.usuario_id %>" class="btn btn-warning">Editar Datos</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<%- include('partials/footer') %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

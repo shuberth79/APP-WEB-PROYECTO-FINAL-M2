@@ -1,0 +1,134 @@
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+
+                    <!-- Mostrar Iniciar Sesión y Registro SOLO si NO está logueado -->
+                    <% if (!login) { %>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/login">Iniciar Sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/registro">Registro</a>
+                        </li>
+                    <% } %>
+
+                    <!-- Si está logueado como ADMIN -->
+                    <% if (login && rol === "admin") { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">Administración</a>
+                        </li>
+                    <% } %>
+
+                    <!-- Si está logueado como USUARIO -->
+                    <% if (login && rol === "user") { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/usuario_dashboard">Usuarios</a>
+                        </li>
+                    <% } %>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</body>
+
+
+
+
+
+
+
+<!-- </head>
+
+<body>
+    <h1></h1>
+    <nav class="navbar navbar-expand-lg navbarlight bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/login">Iniciar Sesion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/registro">Registro</a>
+                    </li>
+                    <% if (login) {%>  
+                        <% if (rol === "admin") { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin">Administración</a>
+                            </li>
+                        <% } %>
+                    <% } %>
+                    <% if (login) {%>  
+                        <% if (rol === "user") { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/usuario_dashboard">Usuarios</a>
+                            </li>
+                        <% } %>
+                    <% } %>                              
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+ -->
+
+
+
+
+<!-- 
+   <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+ 
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Iniciar Sesion</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Registrarse</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Usuarios</a>
+        </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle show" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="true">Administrador</a>
+        <ul class="dropdown-menu show" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 44px);">
+          <li><a class="dropdown-item" href="/admin/">Productos</a></li>
+          <li><a class="dropdown-item" href="/admin_clientes/">Clientes </a></li>
+          <li><a class="dropdown-item" href="/admin_pedidos/">Pedidos</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Trabajos </a></li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+      </li>
+    </ul> -->

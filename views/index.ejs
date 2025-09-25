@@ -1,0 +1,113 @@
+<%- include('partials/head') %> 
+<%- include('partials/header') %>
+
+<div class="container mt-4">
+
+    <!-- LOGO -->
+    <!-- <div class="text-center mb-4">
+        <img src="/resources/img/LOGO pequeño.png" width="240" alt="Logo Conciertos">
+    </div> -->
+
+    <!-- SALUDO -->
+    <!-- <h3 class="text-center mb-4">
+        🎶 Bienvenido a la Experiencia Musical 🎶 
+    </h3> -->
+
+    <!-- SLIDER DE IMÁGENES -->
+    <div id="carouselConciertos" class="carousel slide mb-5" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselConciertos" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#carouselConciertos" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carouselConciertos" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#carouselConciertos" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#carouselConciertos" data-bs-slide-to="4"></button>
+            <button type="button" data-bs-target="#carouselConciertos" data-bs-slide-to="5"></button>
+        </div>
+
+        <div class="carousel-inner rounded shadow">
+            <div class="carousel-item active">
+                <img src="/resources/img/_DSC2728.jpg" class="d-block w-100" alt="Concierto 1">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                    <!-- <h5>Vive la Música en Vivo</h5> -->
+                    <h5 class="fw-bold">Vive la Música en Vivo</h5>
+                    <p>Los mejores artistas internacionales en un solo lugar.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/resources/img/_DSC4096.jpg" class="d-block w-100" alt="Concierto 2">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                    <!-- <h5>Ambiente Único</h5> -->
+                    <h5 class="fw-bold">Ambiente Único</h5>
+                    <p>Disfruta la energía de los conciertos en vivo.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/resources/img/_DSC4465.jpg" class="d-block w-100" alt="Concierto 3">
+                <!-- <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2"> -->
+
+                <div class="carousel-caption d-none d-md-block rounded p-2" 
+                style="background-color: #b463b3; opacity: 0.8;">
+                    <h5>Experiencia Inolvidable</h5>
+                    <!-- <h5 class="fw-bold">Experiencia Inolvidable</h5>
+                    <p>No te pierdas los eventos más esperados del año.</p> -->
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/resources/img/_DSC1086.jpg" class="d-block w-100" alt="Concierto 3">
+                <!-- <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2"> -->
+                <div class="carousel-caption d-none d-md-block rounded p-2" 
+                style="background-color: #b463b3; opacity: 0.8;">
+                    <h5 class="fw-bold">Experiencia Inolvidable</h5>
+                    <p>No te pierdas los eventos más esperados del año.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/resources/img/_DSC3960.jpg" class="d-block w-100" alt="Concierto 3">
+                <!-- <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2"> -->
+
+                <div class="carousel-caption d-none d-md-block rounded p-2" 
+                style="background-color: #b463b3; opacity: 0.8;">
+                    <h5 class="fw-bold">Experiencia Inolvidable</h5>
+                    <p>No te pierdas los eventos más esperados del año.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/resources/img/_DSC1466.jpg" class="d-block w-100" alt="Concierto 3">
+                <!-- <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2"> -->
+                <div class="carousel-caption d-none d-md-block rounded p-2" 
+                style="background-color: #b463b3; opacity: 1;">
+                    <h5 class="fw-bold">Experiencia Inolvidable</h5>
+                    <p>No te pierdas los eventos más esperados del año.</p>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselConciertos" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselConciertos" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- DESCRIPCIÓN GENERAL -->
+    <div class="card shadow-lg border-0 mb-5">
+        <div class="card-body text-center">
+            <h4 class="mb-3">Descubre la Magia de los Conciertos</h4>
+            <p>
+                Nuestra plataforma te conecta con los mejores eventos musicales de tu ciudad y del mundo.  
+                Podrás explorar conciertos disponibles, inscribirte fácilmente y llevar un control de tus asistencias.  
+                ¡La música en vivo nunca había estado tan cerca de ti!
+            </p>
+            <a href="/registro" class="btn mt-3 px-4 py-2 text-white fw-bold"
+               style="background-color: #b463b3; border-color: #b463b3;">
+                Regístrate y únete</a>
+        </div>
+    </div>
+
+</div>
+
+<%- include('partials/footer') %>

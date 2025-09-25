@@ -1,0 +1,41 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<div class="container mt-4 w-25">
+    <div class="card border-secundary">
+        <div class="card-header"> Nuevo registro</div>
+        <div class="card-body">
+
+            <form action="/create_conciertoX" method="POST">
+                <div class="mb-3">
+                    <label for="nombre_concierto" class="form-label">Nombre del Concierto: </label>
+                    <input type="text" name="nombre_concierto" id="nombre_concierto" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="fecha" class="form-label">Fecha</label>
+                    <input type="date" name="fecha" id="fecha" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="hora" class="form-label">Hora</label>
+                    <input type="time" name="hora" id="hora" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="stock" class="form-label">Locaciones:</label>
+                        <select name="locaciones">
+                            <option value="locacion 1">Loc 1: Area para Medios</option>
+                            <option value="locacion 2">Loc 2: Area Autoridades</option>
+                            <option value="locacion 3">Loc 3: Area Invitados</option>
+                        </select><br>
+                </div>
+                <div class="mb-3">
+                    <label for="ciudad" class="form-label">Ciudad</label>
+                    <textarea name="ciudad" id="ciudad" class="form-control"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Guardar</button>
+                <a href="/admin" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

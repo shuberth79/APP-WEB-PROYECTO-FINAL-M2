@@ -1,0 +1,50 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+    <% if(concierto){ %>
+        <div class="container mt-4 w-25">
+            <div class="card border-secundary">
+                <div class="card-header"> Modificar registro</div>
+                    <div class="card-body">
+                        <form action="/update_concierto" method="post">
+                            <input type= "hidden" id="concierto_id" name="concierto_id" value="<%= concierto.concierto_id %>"/>
+                                <div class="mb-3">
+                                    <label for="nombre_concierto" class="form-label">Nombre del Concierto: </label>
+                                    <input type="text" name="nombre_concierto" id="nombre_concierto" class="form-control" required
+                                        value="<%= concierto.nombre_concierto %>"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="fecha" class="form-label">Fecha</label>
+                                    <input type="date" name="fecha" id="fecha" class="form-control" required
+                                        value="<%= concierto.fecha %>"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="hora" class="form-label">Hora</label>
+                                    <input type="time" name="hora" id="hora" class="form-control" required
+                                        value="<%= concierto.hora %>"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="stock" class="form-label">Locaciones:</label>
+                                        <select name="locaciones">
+                                            <option value="locacion 1">Loc 1: Area para Medios</option>
+                                            <option value="locacion 2">Loc 2: Area Autoridades</option>
+                                            <option value="locacion 3">Loc 3: Area Invitados</option>
+                                        </select><br>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="ciudad" class="form-label">Ciudad</label>
+                                    <input type="text" name="ciudad" id="ciudad" class="form-control" required
+                                        value="<%= concierto.ciudad %>"/>
+                                </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <a href="/admin" class="btn btn-danger">Cancelar</a>
+                        </form>
+                    </div> 
+                </div> 
+            </div>
+        </div>
+    <% } else { %>
+        <h1>concierto no encontrado</h1>
+    <% } %>
+
+<%- include('partials/footer') %>

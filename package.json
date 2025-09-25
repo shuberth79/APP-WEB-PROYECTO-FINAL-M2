@@ -1,0 +1,36 @@
+{
+  "name": "aplicacion-web-registro-e-inicios-sesion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shuberth79/APLICACION-WEB-Registro-e-Inicios-Sesion.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/shuberth79/APLICACION-WEB-Registro-e-Inicios-Sesion/issues"
+  },
+  "homepage": "https://github.com/shuberth79/APLICACION-WEB-Registro-e-Inicios-Sesion#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cookie": "^1.0.2",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.18.1",
+    "express-validator": "^7.2.1",
+    "mysql2": "^3.14.1",
+    "nodemailer": "^7.0.6",
+    "parser": "^0.1.4",
+    "session": "^0.1.0",
+    "socket.io": "^4.8.1"
+  }
+}

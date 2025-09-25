@@ -1,0 +1,64 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+
+<body>
+    <div class="container mt-4">
+        <h2 class="mb-4">🎶 Inscripción a Conciertos</h2>
+
+        <% if (error_message) { %>
+            <div class="alert alert-danger"><%= error_message %></div>
+        <% } %>
+
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Ciudad</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (conciertos.length > 0) { %>
+                    <% conciertos.forEach(concierto => { %>
+                        <tr>
+                            <td><%= concierto.nombre_concierto %></td>
+                            <td><%= concierto.fecha %></td>
+                            <td><%= concierto.hora %></td>
+                            <td><%= concierto.ciudad %></td>
+                            <td>
+                                <% if (inscritos.includes(concierto.concierto_id)) { %>
+                                    <!-- Ya inscrito -->
+                                    <form action="/cancelar_concierto" method="POST" style="display:inline;">
+                                        <input type="hidden" name="usuario_id" value="<%= usuarioId %>">
+                                        <input type="hidden" name="concierto_id" value="<%= concierto.concierto_id %>">
+                                        <button type="submit" class="btn btn-danger btn-sm"
+                                            onclick="return confirm('¿Seguro que deseas cancelar tu inscripción?');">
+                                            Cancelar inscripción
+                                        </button>
+                                    </form>
+                                <% } else { %>
+                                    <!-- No inscrito -->
+                                    <form action="/inscribir_concierto" method="POST" style="display:inline;">
+                                        <input type="hidden" name="usuario_id" value="<%= usuarioId %>">
+                                        <input type="hidden" name="concierto_id" value="<%= concierto.concierto_id %>">
+                                        <button type="submit" class="btn btn-success btn-sm">Inscribirme</button>
+                                    </form>
+                                <% } %>
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="5" class="text-center">No hay conciertos disponibles.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+        <a href="/usuario_dashboard" class="btn btn-secondary mt-3">⬅ Volver al Dashboard</a>
+    </div>
+</body>
+
+<%- include('partials/footer') %>

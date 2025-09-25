@@ -1,0 +1,37 @@
+<%- include('partials/head') %> <%- include('partials/header') %>
+    <% if(escenario){ %>
+        <div class="container mt-4 w-25">
+            <div class="card border-secundary">
+                <div class="card-header"> Modificar Escenario</div>
+                <div class="card-body">
+                    <form action="/update_escenario" method="post">
+                        <input type= "hidden" id="escenario_id" name="escenario_id" value="<%= escenario.escenario_id %>"/>
+
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre: </label>
+                                <input type="text" name="nombre" id="nombre" class="form-control" required
+                                    value="<%= escenario.nombre %>"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ubicacion" class="form-label">Ubicacion</label>
+                                <input type="text" name="ubicacion" id="ubicacion" class="form-control" required
+                                    value="<%= escenario.ubicacion %>"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="capacidad" class="form-label">Capacidad</label>
+                                <input type="text" name="capacidad" id="capacidad" class="form-control" required
+                                    value="<%= escenario.capacidad %>"/>
+                            </div>
+
+                        <br>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <a href="/admin" class="btn btn-danger">Cancelar</a>
+                    </form>
+                </div> 
+            </div>
+        </div>
+        <% } else { %>
+            <h1>escenario no encontrado</h1>
+            <% } %>
+
+                <%- include('partials/footer') %>

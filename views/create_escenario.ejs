@@ -1,0 +1,30 @@
+<%- include('partials/head') %>
+    <%- include('partials/header') %>
+
+        <div class="container mt-4 w-25">
+            <div class="card border-secundary">
+                <div class="card-header"> Agregar Escenario</div>
+                <div class="card-body">
+                    <form action="/save_escenario" method="post">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre: </label>
+                            <input type="text" class="form-control" id="nombre" name="nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="ubicacion" class="form-label">Ubicacion: </label>
+                            <input type="ubicacion" class="form-control" id="ubicacion" name="ubicacion">
+                        </div>
+                        <div class="mb-3">
+                            <label for="capacidad" class="form-label">Capacidad: </label>
+                            <input type="capacidad" class="form-control" id="capacidad" name="capacidad">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <a href="/admin" class="btn btn-danger">Cancelar</a>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+<%- include('partials/footer') %>

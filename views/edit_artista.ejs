@@ -1,0 +1,47 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+    <% if(artista){ %>
+        <div class="container mt-4 w-25">
+            <div class="card border-secundary">
+                <div class="card-header"> Modificar registro</div>
+                    <div class="card-body">
+                        <form action="/update_artista" method="post">
+                            <input type= "hidden" id="artista_id" name="artista_id" value="<%= artista.artista_id %>"/>
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombres Completos: </label>
+                                <input type="text" class="form-control" id="nombre" name="nombre"
+                                    value="<%= artista.nombre %>"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="genero_artistico" class="form-label">Género Artístico: </label>
+                                <input type="text" class="form-control" id="genero_artistico" name="genero_artistico"
+                                    value="<%= artista.genero_artistico %>"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="telefono" class="form-label">Telefono: </label>
+                                <input type="int" class="form-control" id="telefono" name="telefono"
+                                    value="<%= artista.telefono %>"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="ciudad" class="form-label">Ciudad: </label>
+                                <input type="enum" class="form-control" id="ciudad" name="ciudad"
+                                    value="<%= artista.ciudad %>"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="descripcion" class="form-label">Descripcion: </label>
+                                <input type="text" class="form-control" id="descripcion" name="descripcion"
+                                    value="<%= artista.descripcion %>"/>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <a href="/admin" class="btn btn-danger">Cancelar</a>
+                        </form>
+                    </div> 
+                </div> 
+            </div>
+        </div>
+    <% } else { %>
+        <h1>artista no encontrado</h1>
+    <% } %>
+
+<%- include('partials/footer') %>

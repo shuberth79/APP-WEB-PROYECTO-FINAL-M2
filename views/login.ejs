@@ -1,0 +1,47 @@
+
+<%- include('partials/head') %>
+    <title>Login</title>
+<%- include('partials/header') %>
+<head>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container-gral">
+        <div class="container-logo">
+            <img src="/resources/img/LOGO pequeño.png" width="350" aling="center"  alt="">
+        </div>
+
+
+        <div class="form-section">
+            <div class="login-form">
+                <!-- <h2>Login</h2> -->
+                <form action="/auth" method="POST">
+                    <input type="text" name="email" placeholder="Ingrese su email" required/>
+                    <input type="password" name="pass" placeholder="Contraseña" required/>
+                    <button type="submit" class="btn-login">Login</button>
+                    <a href="/registro" class="btn-register"> Registrarse</a>
+                </form>
+            </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+        <% if (typeof alert !=='undefined' ) { %>
+            <script>
+                Swal.fire({
+                    title: '<%= alertTitle %>',
+                    text: '<%= alertMessage %>',
+                    icon: '<%= alertIcon %>',
+                    showConfirmButton: <%= showConfirmButton %>,
+                    timer: <%= timer %>
+                }).then(() => {
+                        window.location = '/<%= ruta %>'
+                    })
+            </script>
+        <% } %>
+    </div>
+</body>
+<%- include('partials/footer') %>
