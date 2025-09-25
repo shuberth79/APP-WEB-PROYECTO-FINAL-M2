@@ -65,7 +65,6 @@
                                     </td>
                                     <td><%= concierto.hora %></td>
                                     <td><%= concierto.ciudad %></td>
-
                                     <td>
                                         <a href="/edit_concierto/<%= concierto.concierto_id %>" class="btn btn-info btn-sm">Editar</a>
                                         <form action="/delete_concierto" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de eliminar este concierto?');">

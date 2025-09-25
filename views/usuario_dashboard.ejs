@@ -46,7 +46,18 @@
                                 <% conciertos.forEach(concierto => { %>
                                     <tr>
                                         <td><%= concierto.nombre_concierto %></td>
-                                        <td><%= concierto.fecha %></td>
+                                        <td>
+                                            <%
+                                            // Asegúrate de que `concierto.fecha` es un objeto Date
+                                            const fecha = new Date(concierto.fecha);
+                                            const fechaFormateada = fecha.toLocaleDateString('es-ES', {
+                                                year: 'numeric',
+                                                month: '2-digit',
+                                                day: '2-digit'
+                                            });
+                                            %>
+                                            <%= fechaFormateada %>
+                                        </td>
                                         <td><%= concierto.hora %></td>
                                         <td><%= concierto.ciudad %></td>
                                         <td>
@@ -84,7 +95,18 @@
                                     <% misConciertos.forEach(concierto => { %>
                                         <tr>
                                             <td><%= concierto.nombre_concierto %></td>
-                                            <td><%= concierto.fecha %></td>
+                                            <td>
+                                                <%
+                                                // Asegúrate de que `concierto.fecha` es un objeto Date
+                                                const fecha = new Date(concierto.fecha);
+                                                const fechaFormateada = fecha.toLocaleDateString('es-ES', {
+                                                    year: 'numeric',
+                                                    month: '2-digit',
+                                                    day: '2-digit'
+                                                });
+                                                %>
+                                                <%= fechaFormateada %>
+                                            </td>
                                             <td><%= concierto.hora %></td>
                                             <td><%= concierto.ciudad %></td>
                                             <td>
