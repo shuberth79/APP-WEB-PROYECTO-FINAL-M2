@@ -52,13 +52,11 @@ router.get("/registro", (req, res) => {
     }
 });
 
-
-
-
-
+// ########################################################
+// ########################################################
+// ########################################################
 
 // ######################################## VISTA ADMIN DASHBOARD 
-
 // router.get("/admin", async (req, res) => {
 //     if (req.session.loggedin && req.session.rol === "admin") {
 //         try {
@@ -102,11 +100,7 @@ router.get("/registro", (req, res) => {
 
 
 
-
-
-
 // ##################### VISTA ADMIN DASHBOARD DE RESPALDO HASTA SOLUCIONAR LAS CONEXIONES AL CREAR Y EDITAR
-
 router.get("/admin", (req, res) => {
     if (req.session.loggedin && req.session.rol === "admin") { // Aseguramos que solo admin pueda ver esto
         // Realizar múltiples consultas a la base de datos
@@ -177,12 +171,6 @@ router.get("/admin", (req, res) => {
 
 
 
-
-// ########################################################
-// ########################################################
-// ########################################################
-
-
 // ######################################## USUARIOS DASHBOARD 1,  ANTES DE REVISION DE ROL (admin/user), 
 // router.get("/usuario_dashboard", (req, res) => {
 //     if (req.session.loggedin && req.session.rol === "user") {
@@ -241,11 +229,11 @@ router.get("/admin", (req, res) => {
 // });
 
 
+
 // ######################################## USUARIOS DASHBOARD 
 // router.get("/usuario_dashboard", (req, res) => {
 //     if (req.session.loggedin && req.session.rol === "user") { // CORREGIDO: rol "user"
 //         const usuarioId = req.session.usuario_id;
-
 //         Promise.all([
 //             new Promise((resolve, reject) => {
 //                 db.query("SELECT * FROM usuarios WHERE usuario_id = ?", [usuarioId], (error, results) => {
@@ -286,11 +274,9 @@ router.get("/admin", (req, res) => {
 
 
 // ######################################## USUARIOS DASHBOARD
-
 // router.get("/usuario_dashboard", async (req, res) => {
 //     if (req.session.loggedin && req.session.rol === "user") {
 //         const usuarioId = req.session.usuario_id;
-
 //         try {
 //             const [usuarioResults] = await db.query("SELECT * FROM usuarios WHERE usuario_id = ?", [usuarioId]);
 //             if (usuarioResults.length === 0) {
@@ -303,16 +289,13 @@ router.get("/admin", (req, res) => {
 //                 });
 //             }
 //             const usuario = usuarioResults[0];
-
 //             const [conciertosResults] = await db.query("SELECT * FROM conciertos");
-
 //             const [misConciertosResults] = await db.query(
 //                 `SELECT c.* FROM usuario_conciertos uc 
 //                  JOIN conciertos c ON uc.concierto_id = c.concierto_id 
 //                  WHERE uc.usuario_id = ?`,
 //                 [usuarioId]
 //             );
-
 //             res.render("usuario_dashboard", {
 //                 usuario,
 //                 conciertos: conciertosResults,
@@ -320,7 +303,6 @@ router.get("/admin", (req, res) => {
 //                 login: true,
 //                 rol: req.session.rol
 //             });
-
 //         } catch (err) {
 //             console.error("Error al obtener datos para el dashboard de usuario:", err);
 //             res.render("usuario_dashboard", {
@@ -340,13 +322,10 @@ router.get("/admin", (req, res) => {
 
 
 
-
-
 // ######################################## VISTA USUARIO DASHBOARD DE RESPALDO HASTA SOLUCIONAR LAS CONEXIONES AL CREAR Y EDITAR
 router.get("/usuario_dashboard", (req, res) => {
     if (req.session.loggedin && req.session.rol === "user") {
         const usuarioId = req.session.usuario_id;
-
         // Traer usuario de la BD
         db.query("SELECT * FROM usuarios WHERE usuario_id = ?", [usuarioId], (err, usuarioResults) => {
             if (err || usuarioResults.length === 0) {
@@ -359,7 +338,6 @@ router.get("/usuario_dashboard", (req, res) => {
                     rol: req.session.rol
                 });
             }
-
             const usuario = usuarioResults[0];
             // Traer todos los conciertos
             db.query("SELECT * FROM conciertos", (err2, conciertosResults) => {
@@ -367,7 +345,6 @@ router.get("/usuario_dashboard", (req, res) => {
                     console.error("Error obteniendo conciertos:", err2);
                     return res.render("usuario_dashboard", { usuario, conciertos: [], misConciertos: [], login: true, rol: req.session.rol });
                 }
-
                 // Traer conciertos del usuario
                 db.query(
                     `SELECT c.* 
@@ -380,7 +357,6 @@ router.get("/usuario_dashboard", (req, res) => {
                             console.error("Error obteniendo mis conciertos:", err3);
                             return res.render("usuario_dashboard", { usuario, conciertos: conciertosResults, misConciertos: [], login: true, rol: req.session.rol });
                         }
-
                         // 👇 Ahora sí mandamos todo a la vista
                         res.render("usuario_dashboard", {
                             usuario,
@@ -398,7 +374,9 @@ router.get("/usuario_dashboard", (req, res) => {
     }
 });
 
-
+// ########################################################
+// ########################################################
+// ########################################################
 
 
 // ######################################## CANCELAR CONCIERTO 2, 3 DESPUES DE REVISION DE ROL (admin/user), 
@@ -407,9 +385,7 @@ router.post("/cancelar_concierto", (req, res) => {
     if (!req.session.loggedin || req.session.rol !== "user") {
         return res.redirect("/login");
     }
-
     const { usuario_id, concierto_id } = req.body;
-
     // obtener datos ANTES de borrar
     db.query(
         `SELECT u.nombre, u.email, c.nombre_concierto, c.fecha, c.ciudad 
@@ -421,9 +397,7 @@ router.post("/cancelar_concierto", (req, res) => {
                 console.error("Error obteniendo datos:", err);
                 return res.redirect("/usuario_dashboard");
             }
-
             const { nombre, email, nombre_concierto, fecha, ciudad } = data[0];
-
             // eliminar inscripción
             db.query(
                 "DELETE FROM usuario_conciertos WHERE usuario_id = ? AND concierto_id = ?",
@@ -433,7 +407,6 @@ router.post("/cancelar_concierto", (req, res) => {
                         console.error("Error al cancelar inscripción:", error);
                         return res.redirect("/usuario_dashboard");
                     }
-
                     // enviar correo de cancelación
                     const mailOptions = {
                         from: process.env.EMAIL_USER,
@@ -450,7 +423,6 @@ router.post("/cancelar_concierto", (req, res) => {
                             <p>Lamentamos que no puedas asistir. ¡Te esperamos en futuros eventos!</p>
                         `
                     };
-
                     transporter.sendMail(mailOptions, (mailErr) => {
                         if (mailErr) console.error("Error enviando correo:", mailErr);
                         res.redirect("/usuario_dashboard");
@@ -479,7 +451,6 @@ router.post("/inscribir_concierto", (req, res) => {
                 console.error("Error al inscribir usuario:", error);
                 return res.redirect("/usuario_dashboard");
             }
-
             // obtener datos usuario + concierto
             db.query(
                 `SELECT u.nombre, u.email, c.nombre_concierto, c.fecha, c.ciudad 
@@ -519,9 +490,6 @@ router.post("/inscribir_concierto", (req, res) => {
 
 
 
-
-
-
 // // ######################################## DELETE CONCIERTOS - RESPALDO PARA SOLUCIONAR CREAR - EDITAR - ELIMANR
 // router.post("/delete_concierto", (req, res) => {
 //     // Asegurarse de que el usuario sea administrador antes de permitir la eliminación
@@ -544,6 +512,8 @@ router.post("/inscribir_concierto", (req, res) => {
 //     );
 // });
 
+
+
 // ######################################## DELETE CONCIERTOS - ALTERNATIVA PARA SOLUCIONAR CREAR - EDITAR - ELIMANR
 router.post("/delete_concierto", (req, res) => {
     // Asegurarse de que el usuario sea administrador antes de permitir la eliminación
@@ -551,7 +521,6 @@ router.post("/delete_concierto", (req, res) => {
         return res.redirect("/");
     }
     const concierto_id = req.body.concierto_id;
-
     // First, delete from the child table (usuario_conciertos)
     db.query(
         "DELETE FROM usuario_conciertos WHERE concierto_id = ?",
@@ -561,7 +530,6 @@ router.post("/delete_concierto", (req, res) => {
                 console.error("Error al eliminar registros de usuario_conciertos:", error);
                 return res.redirect("/admin");
             }
-            
             // If the first deletion was successful, proceed to delete from the parent table (conciertos)
             db.query(
                 "DELETE FROM conciertos WHERE concierto_id = ?",
@@ -578,6 +546,12 @@ router.post("/delete_concierto", (req, res) => {
         }
     );
 });
+
+
+
+
+
+
 
 
 
@@ -605,6 +579,7 @@ router.post("/delete_usuario", (req, res) => {
 });
 
 
+
 // ######################################## DELETE ESCENARIOS (POST)
 router.post("/delete_escenario", (req, res) => {
     // Asegurarse de que el usuario sea administrador antes de permitir la eliminación
@@ -625,6 +600,7 @@ router.post("/delete_escenario", (req, res) => {
         }
     );
 });
+
 
 
 // ######################################## DELETE ARTISTAS (POST)
@@ -649,6 +625,7 @@ router.post("/delete_artista", (req, res) => {
 });
 
 
+
 // ######################################## CREATE CONCIERTOS
 router.get("/create_conciertoX", (req, res) => {
     if (req.session.loggedin) {
@@ -660,6 +637,8 @@ router.get("/create_conciertoX", (req, res) => {
     }
 });
 
+
+
 // ######################################## CREATE USUARIO
 router.get("/create_usuario", (req, res) => {
     if (req.session.loggedin) {
@@ -670,6 +649,9 @@ router.get("/create_usuario", (req, res) => {
         res.redirect("/")
     }
 });
+
+
+
 
 // ######################################## CREATE ESCENARIO
 router.get("/create_escenario", (req, res) => {
@@ -683,6 +665,7 @@ router.get("/create_escenario", (req, res) => {
 });
 
 
+
 // ######################################## CREATE ARTISTA
 router.get("/create_artista", (req, res) => {
     if (req.session.loggedin) {
@@ -693,6 +676,7 @@ router.get("/create_artista", (req, res) => {
         res.redirect("/")
     }
 });
+
 
 
 // ######################################## EDIT CONCIERTOS
@@ -728,7 +712,6 @@ router.get("/edit_usuario/:usuario_id", (req, res) => {
                     throw error; // EN CASO DE HABER ERRORES MOSTRARNOS
                 } else {
                     res.render("edit_usuario", {  // EN CASO DE NO HABER ERRORES LLEVARNOS A VISTA ADMIN
-                        
                         usuario: results[0],
                         login: true,
                     });
@@ -739,6 +722,7 @@ router.get("/edit_usuario/:usuario_id", (req, res) => {
         res.redirect("/");
     }
 })
+
 
 
 // ######################################## EDIT ESCENARIO
@@ -766,10 +750,6 @@ router.get("/edit_escenario/:escenario_id", isAdmin, (req, res) => {
         }
     );
 });
-
-
-
-
 
 
 

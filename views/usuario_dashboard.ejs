@@ -7,21 +7,48 @@
 
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2>Hola, <%= usuario.nombre %> 👋</h2>
-            <a href="/logout" class="btn btn-danger">Cerrar Sesión</a>
+            <!-- <a href="/logout" class="btn btn-danger" style="background-color: #af4cad; border-color: #af4cad;">Cerrar Sesión</a> -->
         </div>
 
         <!-- NAV TABS -->
         <ul class="nav nav-tabs" id="usuarioTabs" role="tablist">
-            <li class="nav-item" role="presentation">
+            <!-- <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="disponibles-tab" data-bs-toggle="tab" data-bs-target="#disponibles" 
-                type="button" role="tab" aria-controls="disponibles" aria-selected="false">Conciertos Disponibles</button> <!--active-->
+                type="button" role="tab" aria-controls="disponibles" aria-selected="false">Conciertos Disponibles</button> 
+            </li> -->
+            <!-- <li class="nav-item" role="presentation">
+                <button class="nav-link" id="misconciertos-tab" data-bs-toggle="tab" data-bs-target="#misconciertos"
+                type="button" role="tab" aria-controls="misconciertos" aria-selected="false">Mis Conciertos</button>
+            </li> -->
+            <!-- <li class="nav-item" role="presentation">
+                <button class="nav-link" id="datos-tab" data-bs-toggle="tab" data-bs-target="#datos" 
+                type="button" role="tab" aria-controls="datos" aria-selected="true">Mis Datos</button>
+            </li> -->
+                   
+          
+            <li class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                <button class="btn btn-outline-primary" id="disponibles-tab" data-bs-toggle="tab" data-bs-target="#disponibles" 
+                type="button" role="tab" aria-controls="disponibles" aria-selected="true">Conciertos Disponibles</button>
             </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="misconciertos-tab" data-bs-toggle="tab" data-bs-target="#misconciertos" type="button" role="tab" aria-controls="misconciertos" aria-selected="false">Mis Conciertos</button>
+
+            <li class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                <button class="btn btn-outline-primary" id="misconciertos-tab" data-bs-toggle="tab" data-bs-target="#misconciertos" 
+                type="button" role="tab" aria-controls="misconciertos" aria-selected="true">Mis Conciertos</button>
             </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="datos-tab" data-bs-toggle="tab" data-bs-target="#datos" type="button" role="tab" aria-controls="datos" aria-selected="true">Mis Datos</button>
+
+            <li class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                <button class="btn btn-outline-primary" id="datos-tab" data-bs-toggle="tab" data-bs-target="#datos" 
+                type="button" role="tab" aria-controls="datos" aria-selected="true">Mis Datos</button>
             </li>
+            
+        
+
+
+
+
+        
+                
+        
         </ul>
 
         <!-- CONTENIDO DE CADA PESTAÑA -->
@@ -61,10 +88,10 @@
                                         <td><%= concierto.hora %></td>
                                         <td><%= concierto.ciudad %></td>
                                         <td>
-                                            <form action="/inscribir_concierto" method="POST">
+                                            <form action="/inscribir_concierto" method="POST" >
                                                 <input type="hidden" name="usuario_id" value="<%= usuario.usuario_id %>">
                                                 <input type="hidden" name="concierto_id" value="<%= concierto.concierto_id %>">
-                                                <button type="submit" class="btn btn-success btn-sm">Inscribirme</button>
+                                                <button type="submit" class="btn btn-success btn-sm" style="background-color: #2e8eee; border-color: #2e8eee;">Inscribirme</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -136,7 +163,7 @@
                         <p><strong>Email:</strong> <%= usuario.email %></p>
                         <p><strong>Teléfono:</strong> <%= usuario.telefono %></p>
                         <p><strong>Dirección:</strong> <%= usuario.direccion %></p>
-                        <a href="/edit_usuario/<%= usuario.usuario_id %>" class="btn btn-warning">Editar Datos</a>
+                        <a href="/edit_usuario/<%= usuario.usuario_id %>" class="btn btn-success btn-sm" style="background-color: #2e8eee; border-color: #2e8eee;">Editar Datos</a>
                     </div>
                 </div>
             </div>

@@ -5,12 +5,9 @@
 <body>
     <div class="container mt-4">
         <h2>Panel de Administrador</h2>
-        
         <div class="d-flex justify-content-between align-items-center mb-4">
-        <a href="/logout" class="btn btn-danger"style="background-color: #b463b3; border-color: #b463b3;">Cerrar Sesión</a>
-        
+        <!-- <a href="/logout" class="btn btn-danger" style="background-color: #b463b3; border-color: #b463b3;">Cerrar Sesión</a> -->
     </div>
-        
         <ul class="nav nav-tabs" id="adminTabs" role="tablist">
 
             <li class="btn-group role="group" aria-label="Small button group">
@@ -70,16 +67,17 @@
                                     <td><%= concierto.hora %></td>
                                     <td><%= concierto.ciudad %></td>
                                     <td>
-                                        <!-- <a href="/edit_concierto/<%= concierto.concierto_id %>" class="btn btn-info btn-sm">Editar</a>
-                                        <form action="/delete_concierto" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de eliminar este concierto?');">
-                                            <input type="hidden" name="concierto_id" value="<%= concierto.concierto_id %>">
-                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                        </form> -->
+                                        <form action="/edit_concierto/<%= concierto.concierto_id %>" method="GET" style="display:inline;">
+                                            <button type="submit" class="btn btn-danger btn-sm" style="background-color: #2e8eee; border-color: #2e8eee;">
+                                                <i class='bx bxs-edit'></i> 
+                                            </button>
+                                        </form>
 
-                                        <a href="/edit_concierto/<%=concierto.concierto_id %>" class="btn btn-outline-warning"><i
-                                                class='bx bxs-edit'></i></a>
-                                        <a href="/delete_concierto/<%=concierto.concierto_id %>" class="btn btn-outline-danger" ><i
-                                                class='bx bxs-trash'></i></a>
+                                        <form action="/delete_concierto" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de eliminar este escenario?');">
+                                            <input type="hidden" name="concierto_id" value="<%= concierto.concierto_id %>">
+                                            <button type="submit" class="btn btn-danger btn-sm" style="background-color: #af4cad; border-color: #af4cad;">
+                                                <i class='bx bxs-trash'></i> </button>
+                                        </form>
                                     </td>
                                 </tr>
                             <% }); %>
@@ -117,16 +115,19 @@
                                     <td><%= usuario.email %></td>
                                     <td><%= usuario.telefono %></td>
                                     <td><%= usuario.direccion %></td>
-                                    <td>
-                                        <!-- <a href="/edit_usuario/<%= usuario.usuario_id %>" class="btn btn-info btn-sm">Editar</a>
-                                        <form action="/delete_usuario" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');">
+                                    <td>                                     
+                                        <form action="/edit_usuario/<%= usuario.usuario_id %>" method="GET" style="display:inline;">
+                                            <button type="submit" class="btn btn-danger btn-sm" style="background-color: #2e8eee; border-color: #2e8eee;">
+                                                <i class='bx bxs-edit'></i> 
+                                            </button>
+                                        </form>
+
+                                        <form action="/delete_usuario" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de eliminar este escenario?');">
                                             <input type="hidden" name="usuario_id" value="<%= usuario.usuario_id %>">
-                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                        </form> -->
-                                        <a href="/edit_usuario/<%=usuario.usuario_id %>" class="btn btn-outline-warning"><i
-                                                class='bx bxs-edit'></i></a>
-                                        <a href="/edit_usuario/<%=usuario.usuario_id %>" class="btn btn-outline-danger" ><i
-                                                class='bx bxs-trash'></i></a>
+                                            <button type="submit" class="btn btn-danger btn-sm" style="background-color: #af4cad; border-color: #af4cad;">
+                                                <i class='bx bxs-trash'></i> </button>
+                                        </form>
+
                                     </td>
                                 </tr>
                             <% }); %>
@@ -161,15 +162,17 @@
                                     <td><%= escenario.ubicacion %></td>
                                     <td><%= escenario.capacidad %></td>
                                     <td>
-                                        <!-- <a href="/edit_escenario/<%= escenario.escenario_id %>" class="btn btn-info btn-sm">Editar</a>
+                                        <form action="/edit_escenario/<%= escenario.escenario_id %>" method="GET" style="display:inline;">
+                                            <button type="submit" class="btn btn-danger btn-sm" style="background-color: #2e8eee; border-color: #2e8eee;">
+                                                <i class='bx bxs-edit'></i> 
+                                            </button>
+                                        </form>
+
                                         <form action="/delete_escenario" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de eliminar este escenario?');">
-                                            <input type="hidden" name="pedido_id" value="<%= escenario.escenario_id %>">
-                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                        </form> -->
-                                        <a href="/edit_escenario/<%=escenario.escenario_id %>" class="btn btn-outline-warning"><i
-                                                class='bx bxs-edit'></i></a>
-                                        <a href="/edit_escenario/<%=escenario.escenario_id %>" class="btn btn-outline-danger" ><i
-                                                class='bx bxs-trash'></i></a>
+                                            <input type="hidden" name="escenario_id" value="<%= escenario.escenario_id %>">
+                                            <button type="submit" class="btn btn-danger btn-sm" style="background-color: #af4cad; border-color: #af4cad;">
+                                                <i class='bx bxs-trash'></i> </button>
+                                        </form>
                                     </td>
                                 </tr>
                             <% }); %>
@@ -206,16 +209,17 @@
                                     <td><%= artista.telefono %></td>
                                     <td><%= artista.ciudad %></td>
                                     <td>
-                                        <!-- <a href="/edit_artista/<%= artista.artista_id %>" class="btn btn-info btn-sm" style="background-color: #b463b3; border-color: #b463b3;">Editar</a>
-                                        <form action="/delete_artista" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de eliminar este Artista?');">
-                                            <input type="hidden" name="artista_id" value="<%= artista.artista_id %>">
-                                            <button type="submit" class="btn btn-danger btn-sm" style="background-color: #2e8eee; border-color: #2e8eee;">Eliminar</button>
-                                        </form> -->
+                                        <form action="/edit_artista/<%= artista.artista_id %>" method="GET" style="display:inline;">
+                                            <button type="submit" class="btn btn-danger btn-sm" style="background-color: #2e8eee; border-color: #2e8eee;">
+                                                <i class='bx bxs-edit'></i> 
+                                            </button>
+                                        </form>
 
-                                        <a href="/edit_artista/<%=artista.artista_id %>" class="btn btn-outline-warning"><i
-                                                class='bx bxs-edit'></i></a>
-                                        <a href="/edit_artista/<%=artista.artista_id %>" class="btn btn-outline-danger" ><i
-                                                class='bx bxs-trash'></i></a>
+                                        <form action="/delete_artista" method="POST" style="display:inline;" onsubmit="return confirm('¿Estás seguro de eliminar este escenario?');">
+                                            <input type="hidden" name="artista_id" value="<%= artista.artista_id %>">
+                                            <button type="submit" class="btn btn-danger btn-sm" style="background-color: #af4cad; border-color: #af4cad;">
+                                                <i class='bx bxs-trash'></i> </button>
+                                        </form>
                                     </td>
                                 </tr>
                             <% }); %>

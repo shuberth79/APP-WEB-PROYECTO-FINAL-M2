@@ -9,7 +9,7 @@ body {
 
 /* ################################ TAMAÑO DEL LOGO FCC*/
 .logo-section img {
-    max-width: 80%; /* AJUSTE DE TAMAÑO IMAGEN LOGO (esté donde esté)*/
+    max-width: 60%; /* AJUSTE DE TAMAÑO IMAGEN LOGO EN VISTA DE REGISTRO
     height: auto;
     display: block; /* ELIMINA ESPACIO EXTRA DEBAJO DE LA IMAGEN */
 }
@@ -28,14 +28,14 @@ body {
 
 /* ################################ SECCION DEL LOGO (Común a Login y Registro) */
 .logo-section {       
-    flex: 1.05;  /* TAMAÑO DEL FONDO DE LA SECCION LOGO */
+    flex: 1.0;  /* TAMAÑO DEL FONDO DE LA SECCION LOGO */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #ffffff; /* COLOR DE FONDO */
     color: #fff;
-    padding: 20px;
+    padding: 0px;
     text-align: center;
     box-sizing: border-box; /* Incluye padding en el ancho */
 }
@@ -66,9 +66,6 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-
-
 
 /* #################### CONTENEDOR GENERAL (CONTENEDOR LOGO + CONTENEDOR FORMULARIO)*/
 .container-gral{
@@ -122,8 +119,6 @@ body {
     text-align: center;  /* NUEVO */
 }
 
-
-
 /* #################### CONTENEDOR DE LOS BOTONES DE LOGIN*/
 .login-form,  /**/
 .contenedor {
@@ -135,13 +130,9 @@ margin: 0 auto;
 
 
 
-
 /* ###############################################
 /* ###############################################
 /* ###############################################*/
-
-
-
 
 
 /*################################### LOGIN: CONTENEDOR GRAL*/
@@ -308,23 +299,41 @@ margin: 0 auto;
     box-shadow: 0 0 0 3px #1e3a8a;
 }
 
-/*################################### VISTA FORMULARIO DE REGISTRO */
+
+
+
+
+/* ######################################################################## */
+/* ################################### VISTA FORMULARIO DE REGISTRO (FINAL) */
+/* ######################################################################## */
+
 .register-form {
-    width: 400px;
-    margin: 0 auto;
-    padding: 0px 20px 60px 20px;
-    margin-top: 35px;
+    /* **CAMBIOS CLAVE PARA ENCAJONAR EL FORMULARIO** */
+    width: 90%; /* Usamos porcentaje para que sea responsive */
+    max-width: 400px; /* Limita el ancho en pantallas grandes (similar al Login) */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22); /* Sombra dramática */
+    border: 1px solid #ced4da;
+    font-family: roboto;
+    
+    /* VALORES EXISTENTES CON AJUSTES DE MARGEN/PADDING */
+    margin: auto; /* Centrado horizontal, margen superior/inferior para separarlo del nav/footer */
+    padding: 30px 40px 60px 40px; /* Aumentamos el padding para espacio interno */
     font-family: roboto;
     text-align: left !important;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
+/* "TITULO: REGISTRO DE CLIENTES" */
 .register-form h1 {
-    text-align: left;
+    text-align: center; 
     color: midnightblue;
-    font-size: 22px;
-    padding: 70px 0 10px 0;
+    font-size: 28px; 
+    padding: 0 0 0 0; /* Espacio debajo del título */
+    font-family: roboto;
 }
+
+/* Los campos de input (para que sigan ocupando el 100% dentro del recuadro) */
 .register-form input[type="password"],
 .register-form input[type="text"] {
     width: 100%;
@@ -333,6 +342,12 @@ margin: 0 auto;
     margin-bottom: 10px;
     box-sizing: border-box;
 }
+
+
+
+
+
+
 
 /*################################### Estilos para el select dropdown */
 /* .select-css {
@@ -493,4 +508,93 @@ footer {
         1.1
     ); /* Aumenta el tamaño de la imagen al pasar el ratón por encima */
     filter: brightness(1.2); /* Incrementa el brillo de la imagen */
+}
+
+
+
+
+
+
+
+
+
+/* ############################################################# */
+/* ############# VENTANA DESPLEGABLE INICIO SESION ############# */
+/* ############################################################# */
+
+/* CSS para desplegar el Dropdown al pasar el ratón */
+@media all and (min-width: 992px) {
+    /* Muestra el menú solo en pantallas grandes (desktop) */
+    .navbar .dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0; /* Asegura que el menú esté pegado al icono */
+    }
+}
+/* NUEVA CORRECCIÓN DE POSICIONAMIENTO */
+/* Selecciona el menú desplegable dentro del elemento con ID authDropdown y le aplica una pequeña traslación */
+#authDropdown .dropdown-menu {
+    /* 1. Fuerza la posición al extremo derecho (Ya lo tienes con dropdown-menu-end) */
+    right: 0 !important; 
+    /* 2. Mueve el menú un poco más a la izquierda para que el icono quede justo encima */
+    /* Este valor (ej: -10px o -15px) podría necesitar un ajuste fino según tu navegador */
+    transform: translateX(-15px) !important; 
+}
+/* Opcional: Estilo para que el icono se vea mejor */
+#navbarDropdownAuth {
+    padding: 0.5rem 0.75rem; /* Ajusta el padding para que el icono se centre mejor */
+}
+
+
+
+
+
+
+
+
+/* ############################################################# */
+/* ######################### MEDIA QUERIES ######################### */
+/* ############################################################# */
+
+@media (max-width: 800px) {
+    /* 1. APILAR CONTENEDOR PRINCIPAL (LOGO + FORM) */
+    .container-gral {
+        flex-direction: column; /* Apila los elementos: logo arriba, formulario abajo */
+        height: auto; /* Permite que el contenedor crezca verticalmente */
+        width: 95%; /* Ocupa casi todo el ancho disponible */
+        padding: 0; /* Elimina el padding horizontal excesivo */
+        max-width: none; /* Elimina el límite máximo para aprovechar la pantalla */
+        /* Asegúrate de corregir el error tipográfico: 'margin left' -> 'margin-left' */
+        margin-left: auto;
+    }
+
+    /* 2. ELIMINAR O REDUCIR EL PESO DEL LOGO EN MÓVIL */
+    .logo-section {
+        flex: none; /* Elimina la proporción de espacio fijo */
+        width: 100%;
+        padding: 20px 10px;
+    }
+
+    /* 3. PERMITIR QUE EL FORMULARIO OCUPE TODO EL ANCHO */
+    .form-section {
+        flex: none; /* Elimina la proporción de espacio fijo */
+        width: 100%;
+        padding: 40px 20px; /* Ajusta el padding para móviles */
+    }
+
+    /* 4. ASEGURAR QUE LOS FORMULARIOS SECUNDARIOS OCUPEN TODO EL ANCHO DISPONIBLE */
+    .login-form,
+    .contenedor,
+    .register-form {
+        width: 100%; /* Ocupa todo el ancho de su contenedor padre */
+        max-width: none;
+    }
+
+    .register-form {
+        width: 100%; /* En móvil, debe ocupar todo el ancho */
+        max-width: none;
+        padding: 20px; /* Reducir padding en pantallas pequeñas */
+        margin-top: 20px;
+    }
+
+
 }
