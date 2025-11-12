@@ -2,14 +2,16 @@
     <%- include('partials/head') %>
         <%- include('partials/header') %>
     
-    <div class="container-gral-registro"> <div class="form-section-registro"> <form class="register-form">
+    <div class="container-gral-registro">
+        <div class="form-section-registro"> 
 
-        <div class="logo-section">
+        
+        <form action="/register" method="POST" class="register-form">
+            <div class="logo-section">
             <img src="/resources/img/LOGO pequeño.png" alt="Festival de la Calle Cordova Logo">
         </div>
 
         <h1>Registro</h1>
-        <form action="/register" method="POST">
 
             <!-- <label for="name">Nombres Completos / Empresa: </label> -->
             <input type="text" name="name" placeholder="Ingrese su nombres completos / empresa" value="<% if (typeof valores !=='undefined' ) { %> <%= valores.name %> <% } %>">

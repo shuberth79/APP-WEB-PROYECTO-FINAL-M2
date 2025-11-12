@@ -1,6 +1,11 @@
 //9 ############################## L I B R E R I A S   (FIJO) ######################################
 const express = require("express");
 const app = express();
+
+if (process.env.NODE_ENV !== "production"){
+    require ("dotenv").config({ path: "./env/.env" });
+}
+
 require("dotenv").config({ path: "./env/.env" });
 const session = require("express-session");
 require("dotenv").config();

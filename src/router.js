@@ -807,8 +807,11 @@ router.post(
         body("telefono").isNumeric().withMessage("debe ser un número"),
     ],
     async (req, res) => {
+        console.log("--- SOLICITUD DE REGISTRO RECIBIDA ---"); 
+        console.log("Cuerpo de la solicitud (req.body):", req.body);
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
+            console.log("hay errores")
             console.log(req.body);
             const valores = req.body; //se guardan los valores introducidos en el formulario
             const validacionErrores = errors.array(); //se guarda en un array todos los errores producidos
@@ -819,6 +822,7 @@ router.post(
                 rol: req.session.rol || null
             });
         } else {
+             console.log("no hay errores")
             //Recoger los datos del formulario
             const name = req.body.name;
             const rol = req.body.rol;
